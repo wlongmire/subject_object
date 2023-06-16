@@ -253,18 +253,18 @@ function App() {
     })
   }
 
-  useEffect(()=> {
-    videoElement?.play()  
-  }, [videoElement])
+  function isActive() {
+    return (active.object  !== null && active.subject !== null )
+  }
 
   useEffect(()=> {
-    if (active.object  !== null && active.object !== null ){
+    if (isActive()){
       videoElement?.play()
     }
     
   }, [active])
-  
-  const currentPoem = (active.object  !== null && active.object !== null ) ? stages[types[active.subject]][types[active.object]].poem : [
+
+  const currentPoem = (isActive()) ? stages[types[active.subject]][types[active.object]].poem : [
     "Subject, Object, Subject",
     "Object, Subject, Object",
     "Subject, Object, Subject",
@@ -286,7 +286,7 @@ function App() {
     "Subject, Object, Subject",
   ]
 
-  const currentStage = (active.object !== null && active.object !== null ) ? stages[types[active.subject]][types[active.object]] : null
+  const currentStage = (isActive()) ? stages[types[active.subject]][types[active.object]] : null
   const currentVideo = (currentStage) ? currentStage.video : ""
 
   return (
@@ -325,12 +325,10 @@ function App() {
             <Video src={currentVideo} ref={setVideoElement} loop/>
             <PoemDisplay>
               {
-                // currentPoem.map(line => <p >{line}</p>)
-                currentPoem.map(line => <p dangerouslySetInnerHTML={{__html: line}}/>)
+                currentPoem.map((line,idx) => <p key={idx}>{line}</p>)
               }
             </PoemDisplay>
           </DisplayContainer>
-          
             
           <div className="d-flex flex-column px-1">
           {
@@ -341,9 +339,6 @@ function App() {
             }
           </div>
         </Interface>
-        
-        {/* <div>scroll bar</div> */}
-
       </SubObjContainer>
 
       <Footer>
@@ -393,9 +388,8 @@ const Title = styled.div`
   & .line {
     flex-grow:1;
     height: 1px;
-    border-bottom: 3px ${props => props.tColor ? props.tColor : "black"} dotted;
+    border-bottom: 3px ${props => props.poemTcolor ? props.poemTcolor : "black"} dotted;
   }
-
 `
 const Interface = styled.div`
   flex-grow: 1;
@@ -416,7 +410,7 @@ const Footer = styled.div`
     color: white;
     display:flex;
     justify-content: space-between;        
-    padding: 1em;
+    padding: 1em 5em;
     position: absolute;
     bottom: 0;
     width: 100vw;
