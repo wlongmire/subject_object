@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import ReactPlayer from 'react-player'
 import './App.css'
 import styled from 'styled-components'
 
@@ -22,25 +21,16 @@ function App() {
   })
   const [videoElement, setVideoElement] = useState(null)
   const types = ["i", "you", "we"]
-  const poem = [
-    "I am the monster",
-    "the moment",
-    "I say I am. Shot",
-    "inside my open mouth",
-    "as soon as the dark",
-    "in my head",
-    "showed its teeth.",
-    "I wait for myself forever",
-    "yelling proud in",
-    "the middle of the street, so tired",
-    "and in love, begging",
-    "for one mistake unremarkable and",
-    "human at last.",
-  ]
 
   const stages = {
     "i":{
       "i":{
+        styles:{
+          bColor:"#EAE3D4", 
+          tColor:"#0000000",
+          poemBcolor:"red",
+          poemTcolor:"white",
+        },
         video: i_i,
         poem: [
           "I am the monster",
@@ -59,6 +49,12 @@ function App() {
         ]
       },
       "you":{
+        styles:{
+          bColor:"#9F1F15", 
+          tColor:"white",
+          poemBcolor:"#ffffff",
+          poemTcolor:"#000000",
+        },
         video: i_you,
         poem: [
           "I am the monster",
@@ -77,6 +73,12 @@ function App() {
         ]
       },
       "we":{
+        styles:{
+          bColor:"black", 
+          tColor:"white",
+          poemBcolor:"#C4B892",
+          poemTcolor:"#000000",
+        },
         video: i_we,
         poem: [
           "I am the monster",
@@ -97,34 +99,46 @@ function App() {
     },
     "you":{
       "i":{
+        styles:{
+          bColor:"#fffff", 
+          tColor:"#0000000",
+          poemBcolor:"#7E7157",
+          poemTcolor:"white",
+        },
         video: you_i,
         poem: [
-          "I am the monster",
+          "You am the monster",
           "the moment",
-          "I say I am. Shot",
-          "inside my open mouth",
+          "I say you are. Shot",
+          "inside your open mouth",
           "as soon as the dark",
-          "in my head",
+          "in its head",
           "showed its teeth.",
-          "I wait for myself forever",
-          "yelling proud in",
-          "the middle of the street, so tired",
-          "and in love, begging",
+          "Wait outside forever",
+          "yell your pride in",
+          "the middle of the street, tired",
+          "in love and begging",
           "for one mistake unremarkable and",
           "human at last.",
         ]
       },
       "you":{
+        styles:{
+          bColor:"#fffff", 
+          tColor:"#0000000",
+          poemBcolor:"#ffffff",
+          poemTcolor:"#000000",
+        },
         video: you_you,
         poem: [
-          "I am the monster",
+          "You am a monster",
           "the moment",
-          "I say I am. Shot",
-          "inside my open mouth",
-          "as soon as the dark",
-          "in my head",
+          "you say you are. Shooting",
+          "yourself inside your open mouth",
+          "as the dark",
+          "in your head",
           "showed its teeth.",
-          "I wait for myself forever",
+          "You keep waiting forever",
           "yelling proud in",
           "the middle of the street, so tired",
           "and in love, begging",
@@ -133,19 +147,25 @@ function App() {
         ]
       },
       "we":{
+        styles:{
+          bColor:"#CCB697", 
+          tColor:"#0000000",
+          poemBcolor:"black",
+          poemTcolor:"white",
+        },
         video: you_we,
         poem: [
-          "I am the monster",
+          "You are the monster",
           "the moment",
-          "I say I am. Shot",
+          "we say you are. Shot",
           "inside my open mouth",
-          "as soon as the dark",
-          "in my head",
+          "when the dark",
+          "in our heads",
           "showed its teeth.",
-          "I wait for myself forever",
+          "You will wait outside forever",
           "yelling proud in",
-          "the middle of the street, so tired",
-          "and in love, begging",
+          "the middle of the street, tired",
+          "in love, and begging",
           "for one mistake unremarkable and",
           "human at last.",
         ]
@@ -153,34 +173,46 @@ function App() {
     },
     "we":{
       "i":{
+        styles:{
+          bColor:"#dfa7a7", 
+          tColor:"white",
+          poemBcolor:"black",
+          poemTcolor:"white",
+        },
         video: we_i,
         poem: [
-          "I am the monster",
+          "We are the monster",
           "the moment",
-          "I say I am. Shot",
-          "inside my open mouth",
+          "I say it. Shot",
+          "in our open mouthes",
           "as soon as the dark",
-          "in my head",
+          "in our heads",
           "showed its teeth.",
-          "I wait for myself forever",
+          "We must all wait for me forever",
           "yelling proud in",
           "the middle of the street, so tired",
-          "and in love, begging",
+          "and in love and begging",
           "for one mistake unremarkable and",
           "human at last.",
         ]
       },
       "you":{
+        styles:{
+          bColor:"#82A3D3", 
+          tColor:"#0000000",
+          poemBcolor:"#ffffff",
+          poemTcolor:"#000000",
+        },
         video: we_you,
         poem: [
-          "I am the monster",
+          "We are the monster",
           "the moment",
-          "I say I am. Shot",
-          "inside my open mouth",
+          "you say we am. Shot",
+          "inside our open mouthes",
           "as soon as the dark",
-          "in my head",
+          "in your head",
           "showed its teeth.",
-          "I wait for myself forever",
+          "We will wait for you forever",
           "yelling proud in",
           "the middle of the street, so tired",
           "and in love, begging",
@@ -189,21 +221,24 @@ function App() {
         ]
       },
       "we":{
+        styles:{
+          bColor:"#fffff", 
+          tColor:"#0000000",
+          poemBcolor:"black",
+          poemTcolor:"white",
+        },
         video: we_we,
         poem: [
-          "I am the monster",
-          "the moment",
-          "I say I am. Shot",
-          "inside my open mouth",
-          "as soon as the dark",
-          "in my head",
-          "showed its teeth.",
-          "I wait for myself forever",
-          "yelling proud in",
-          "the middle of the street, so tired",
-          "and in love, begging",
-          "for one mistake unremarkable and",
-          "human at last.",
+          "We are the monsters.",
+          "We are the moment.",
+          "We shot ourselves in the dark.",
+          "We will wait",
+          "forever",
+          "begging for",
+          "love,",
+          "remarkably human",
+          "mistakes, so tired,",
+          "the middle of the street.",
         ]
       },
     }
@@ -219,41 +254,53 @@ function App() {
   }
 
   useEffect(()=> {
+    videoElement?.play()  
+  }, [videoElement])
+
+  useEffect(()=> {
     if (active.object  !== null && active.object !== null ){
-      videoElement.play()
-      
-    }  else {
-      console.log("nope")
+      videoElement?.play()
     }
     
   }, [active])
   
   const currentPoem = (active.object  !== null && active.object !== null ) ? stages[types[active.subject]][types[active.object]].poem : [
-    "Subject, Object, Subject, Object......",
-    "Object",
-    "Subject, Object, Subject, Object......",
-    "Object",
-    "Subject, Object, Subject, Object......",
-    "Object",
-    "Subject, Object, Subject, Object......",
-    "Object",
-    "Subject, Object, Subject, Object......",
-    "Object",
-    "Subject, Object, Subject, Object......",
-    "Object",
-    "Subject, Object, Subject, Object......",
+    "Subject, Object, Subject",
+    "Object, Subject, Object",
+    "Subject, Object, Subject",
+    "Object, Subject, Object",
+    "Subject, Object, Subject",
+    "Object, Subject, Object",
+    "Subject, Object, Subject",
+    "Object, Subject, Object",
+    "Subject, Object, Subject",
+    "Object, Subject, Object",
+    "Subject, Object, Subject",
+    "Object, Subject, Object",
+    "Subject, Object, Subject",
+    "Object, Subject, Object",
+    "Subject, Object, Subject",
+    "Object, Subject, Object",
+    "Subject, Object, Subject",
+    "Object, Subject, Object",
+    "Subject, Object, Subject",
   ]
-  const currentVideo = (active.object !== null && active.object !== null ) ? stages[types[active.subject]][types[active.object]].video : ""
+
+  const currentStage = (active.object !== null && active.object !== null ) ? stages[types[active.subject]][types[active.object]] : null
+  const currentVideo = (currentStage) ? currentStage.video : ""
 
   return (
-    <Container>
+    <Container 
+      bColor={currentStage?.styles.bColor || "#ffffff"}
+      tColor={currentStage?.styles.tColor || "#000000"}
+    >
       <Header>
         {/* <span><a href="https://www.instagram.com/mixlitphilly/">_mixlit</a></span>
         <span>video by <a href="https://www.pexels.com/@cottonbro">cottonbro studio</a></span> */}
       </Header>
 
       <SubObjContainer>
-        <Title>
+        <Title poemTcolor={currentStage?.styles.poemTcolor || "#000000"}>
           <span className="heading">Subject</span>
           <span className="line"></span>
           <span className="center">(ives)</span>
@@ -271,11 +318,15 @@ function App() {
             }
           </div>
 
-          <DisplayContainer>
-            <Video src={currentVideo} ref={setVideoElement} muted autoplay/>
+          <DisplayContainer
+            poemBcolor={currentStage?.styles.poemBcolor || "#ffffff"}
+            poemTcolor={currentStage?.styles.poemTcolor || "#000000"}
+          >
+            <Video src={currentVideo} ref={setVideoElement} loop/>
             <PoemDisplay>
               {
-                currentPoem.map(line => <p>{line}</p>)
+                // currentPoem.map(line => <p >{line}</p>)
+                currentPoem.map(line => <p dangerouslySetInnerHTML={{__html: line}}/>)
               }
             </PoemDisplay>
           </DisplayContainer>
@@ -296,8 +347,8 @@ function App() {
       </SubObjContainer>
 
       <Footer>
-        {/* <span><a href="https://www.instagram.com/mixlitphilly/">_mixlit</a></span>
-        <span>video by <a href="https://www.pexels.com/@cottonbro">cottonbro studio</a></span> */}
+        <span><a href="https://www.instagram.com/mixlitphilly/">_mixlit</a></span>
+        <span>video by <a href="https://www.pexels.com/@cottonbro">cottonbro studio</a></span>
       </Footer>
     </Container>
   )
@@ -309,7 +360,9 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Adjust the height as needed */
+  background: ${props => props.bColor ? props.bColor : "white"};
+  color: ${props => props.tColor ? props.tColor : "black"};
+  height: 100vh;
   min-width: 860px;
   font-family: 'Montserrat', sans-serif;
 `
@@ -340,7 +393,7 @@ const Title = styled.div`
   & .line {
     flex-grow:1;
     height: 1px;
-    border-bottom: 3px black dotted;
+    border-bottom: 3px ${props => props.tColor ? props.tColor : "black"} dotted;
   }
 
 `
@@ -386,14 +439,18 @@ const Video = styled.video`
 
 const DisplayContainer = styled.div`
   display: flex;
+  background: ${props => props.poemBcolor ? props.poemBcolor : "white"};
+  color: ${props => props.poemTcolor ? props.poemTcolor : "black"};
 `
 
 const PoemDisplay = styled.div`
+  font-family: 'EB Garamond', serif;
+  font-size: 1.2em;
   padding: 0 1em;
   display:flex;
   flex-direction:column;
   justify-content: center;
-
+  
   p {
     margin:0;
   }
@@ -401,7 +458,9 @@ const PoemDisplay = styled.div`
 
 
 const Button = styled.div`
-  width: 14em;
+  font-family: 'EB Garamond', serif;
+  width: 9em;
+  font-size: 1.6em;
   display:flex;
   margin-bottom:5px;
   justify-content: center;
