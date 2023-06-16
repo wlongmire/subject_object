@@ -15,6 +15,7 @@ import we_you from './assets/videos/we-you.mp4'
 import we_we from './assets/videos/we-we.mp4'
 
 function App() {
+  const [isMuted, setMute] = useState(true)
   const [active, setActive] = useState({
     "subject":null,
     "object":null
@@ -289,6 +290,10 @@ function App() {
   const currentStage = (isActive()) ? stages[types[active.subject]][types[active.object]] : null
   const currentVideo = (currentStage) ? currentStage.video : ""
 
+  const toggleMute = () => {
+    setMute(!isMuted);
+  }
+
   return (
     <Container 
       bColor={currentStage?.styles.bColor || "#ffffff"}
@@ -322,7 +327,7 @@ function App() {
             poemBcolor={currentStage?.styles.poemBcolor || "#ffffff"}
             poemTcolor={currentStage?.styles.poemTcolor || "#000000"}
           >
-            <Video src={currentVideo} ref={setVideoElement} loop/>
+            <Video src={currentVideo} muted={isMuted} ref={setVideoElement} loop/>
             <PoemDisplay>
               {
                 currentPoem.map((line,idx) => <p key={idx}>{line}</p>)
@@ -343,6 +348,7 @@ function App() {
 
       <Footer>
         <span><a href="https://www.instagram.com/mixlitphilly/">_mixlit</a></span>
+        <button onClick={toggleMute} className="btn btn-outline-light">{(isMuted ? "hear" :"mute")}</button>
         <span>video by <a href="https://www.pexels.com/@cottonbro">cottonbro studio</a></span>
       </Footer>
     </Container>
