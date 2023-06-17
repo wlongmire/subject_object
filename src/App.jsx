@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import styled from 'styled-components'
 
+import titleImg from './assets/videos/title.mp4'
+
 import i_i from './assets/videos/i-i.mp4'
 import i_you from './assets/videos/i-you.mp4'
 import i_we from './assets/videos/i-we.mp4'
@@ -285,10 +287,12 @@ function App() {
     "Subject, Object, Subject",
     "Object, Subject, Object",
     "Subject, Object, Subject",
+    "Object, Subject, Object",
+    "Subject, Object, Subject",
   ]
 
   const currentStage = (isActive()) ? stages[types[active.subject]][types[active.object]] : null
-  const currentVideo = (currentStage) ? currentStage.video : ""
+  const currentVideo = (currentStage) ? currentStage.video : titleImg
 
   const toggleMute = () => {
     setMute(!isMuted);
@@ -347,8 +351,16 @@ function App() {
       </SubObjContainer>
 
       <Footer>
-        <span><a href="https://www.instagram.com/mixlitphilly/">_mixlit</a></span>
-        <button onClick={toggleMute} className="btn btn-outline-light">{(isMuted ? "hear" :"mute")}</button>
+        <span><a href="https://www.instagram.com/mixlitphilly/">_mixlit</a> 2023</span>
+        <div>
+          <button onClick={toggleMute} className="btn btn-outline-primary mx-1">{(isMuted ? "hear" :"mute")}</button>
+          <button onClick={()=>{
+            setActive({
+              "subject":null,
+              "object":null
+            })
+          }} className="btn btn-outline-primary mx-1">reset</button>
+        </div>
         <span>video by <a href="https://www.pexels.com/@cottonbro">cottonbro studio</a></span>
       </Footer>
     </Container>
